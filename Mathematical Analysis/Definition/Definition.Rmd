@@ -1,0 +1,260 @@
+---
+title: "数学分析定义"
+date: "`r Sys.Date()`"
+author: "邹涛"
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+```{r include=FALSE}
+setwd("G:/学习文件集/考研/Mathematical Analysis/Definition/")
+```
+
+# 数列极限
+**<font color=red size=5>定义1</font>**
+
+设$\{a_n\}$为数列，$a$为定数。$\forall\ \varepsilon>0$，$\exists\ N\in N^+$，当$n>N$时有$$|a_n-a|<\varepsilon$$，则$\lim_\limits{n→\infty}a_n=a$。
+
+**<font color=red size=5>定义1'</font>**
+
+$\forall\ \varepsilon>0$，若在$U(a;\varepsilon)$之外数列$\{a_n\}$中的项至多只有有限个，则$\lim_\limits{n→\infty}a_n=a$。
+
+
+**<font color=red size=5>定义2</font>**
+
+若$\lim_\limits{n→\infty}a_n=0$，则称$\{a_n\}$为无穷小数列。
+
+**<font color=red size=5>定义3</font>**： $\forall\ M>0$，$\exists\ N\in N^+$，当$n>N$时有$$|a_n|>M$$，则称数列$\{a_n\}$发散于无穷大，记作$\lim_\limits{n→\infty}a_n=\infty$。
+
+<font size=2>可将定义3区分为正负无穷大。</font>
+
+# 函数的极限
+**<font color=red size=5>定义1 趋于无穷时的极限</font>**
+
+设$f$为定义在$[a,\infty)$上的函数，$A$为定值，$\forall\ \varepsilon>0,\exists\ M≥a$，当$x>M$时有$$|f(x)-A|<\varepsilon$$，则$\lim_\limits{x→+\infty}f(x)=A$。（$\lim_\limits{x→+\infty}f(x)$与$\lim_\limits{x→\infty}f(x)$的定义与之类似）
+
+**<font color=red size=5>定义2 趋于定点时的极限</font>**
+
+设$f$在$\mathop{U}^\limits{0}(x_0;\delta')$内有定义，$A$为定数，$\forall\ \varepsilon>0,\exists\ \delta(0<\delta<\delta')$，当$0<|x-x_0|<\delta$时，有$$|f(x)-A|<\varepsilon$$，则$\lim_\limits{x→x_0}f(x)=A$。
+
+<font size=2>若将**定义2**中的$0<|x-x_0|<\delta$改为$0<x-x_0<\delta\ (-\delta<x-x_0<0)$时则$\lim_\limits{x→x_0^+}f(x)=A\ (\lim_\limits{x→x_0^-}f(x)=A)$。</font>
+
+**<font color=red size=5>定义3 无穷小量</font>**
+
+设$f$在$\mathop{\cup}^\limits{0}(x_0)$上有定义，若$$\lim_\limits{x→x_0}f(x)=0$$，则称$f$为$x→x_0$的无穷小量。若函数$g$在$\mathop{\cup}^\limits{0}(x_0)$有界，则称$g$为$x→x_0$的有界量。
+
+<font size=2>$x→x_0^-,x→x_0^+,x→+\infty,x→-\infty,x→\infty$的情况有类似定义。</font>
+
+**<font color=red size=5>定义4 无穷大量</font>**
+
+设函数$f$在$\mathop{\cup}^\limits{0}(x_0)$上有定义,$\forall\ G>0,\exists\ \delta>0$，当$x\in \mathop{\cup}^\limits{0}(x_0;\delta) \subset \mathop{\cup}^\limits{0}(x_0)$时，有$$|f(x)|>G$$，则$\lim_\limits{x→x_0}f(x)=\infty$。
+
+<font size=2>若将**定义4**中的$|f(x)|>G$改为$f(x)>G\ (f(x)<-G)$，有$\lim_\limits{x→x_0}f(x)=+\infty\ (\lim_\limits{x→x_0}f(x)=-\infty)$</font>
+
+# 函数的连续性
+**<font color=red size=5>定义1 连续性</font>**
+
+设函数$f$在$U(x_0)$上有定义，若$$\lim_\limits{x→x_0}f(x)=f(x_0)$$，则称$f$在点$x_0$处连续。
+
+利用增量表述函数连续性：$$\lim_\limits{\Delta x→0}\Delta y=0$$
+
+**<font color=red size=5>定义2 单侧连续性</font>**
+
+设函数$f$在$U_+(x_0)$有定义，若$$\lim_\limits{x→x_0^+}f(x)=f(x_0)$$，则称$f$在$x_0$右连续。
+
+<font size=2>左连续类似定义</font>
+
+**<font color=red size=5>定义3 间断点</font>**
+
+1. $x_0$处的可去间断点：$$\lim_\limits{x→x_0^+}f(x)=\lim_\limits{x→x_0^-}f(x)=A$$，$f(x_0)$不存在或不等于$A$。
+
+2. $x_0$处的跳跃间断点：$$\lim_\limits{x→x_0^+}f(x)≠\lim_\limits{x→x_0^-}f(x)$$
+
+上述1和2中函数在$x_0$的左右极限都存在，此时的间断点为Ⅰ类间断点；至少有一侧极限不存在时为Ⅱ类间断点。
+
+**<font color=red size=5>定义3 一致连续性</font>**
+
+$f$为区间$I$上的函数，若$\forall\ \varepsilon>0,\  \exists\ \delta(\varepsilon)>0$，使得对于任何$x', x''\in I$，只要$|x'-x''|<\delta$，就有：$$|f(x')-f(x'')|<\varepsilon$$，则称$f$在$I$上一致连续。
+
+# 导数和微分
+**<font color=red size=5>定义1 导数</font>**
+
+设$f$在$U(x_0)$上有定义，若$$\lim_\limits{x→x_0}\frac{f(x)-f(x_0)}{x-x_0}$$存在，则称$f$在点$x_0$处可导。
+
+**<font color=red size=5>定义2 二阶导数</font>**
+
+设$f$的导函数$f'$在$U(x_0)$上存在，若$$\lim_\limits{x→x_0}\frac{f'(x)-f'(x_0)}{x-x_0}$$存在，则称$f$在$x_0$二阶可导。
+
+**<font color=red size=5>定义3 单侧导数</font>**
+
+设$f$在$[x_0,x_0+\delta)$上有定义，若$$\lim_\limits{\Delta x→0^+}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$$存在，则该极限为$f$在$x_0$处的右导数。
+
+<font size=2>左导数类似定义</font>
+
+**<font color=red size=5>定义4 极值</font>**
+
+$\forall\ x\in \cup(x_0)$，有$$f(x_0)≥f(x)$$，则称函数$f$在$x_0$处取得极大值，$x_0$为极大值点。
+
+<font size=2>极小值类似定义</font>
+
+**<font color=red size=5>定义5 微分</font>**
+
+若定义在$\cup(x_0)$上的$f$的增量$f(x+x_0)-f(x)$可以表示为$$f(x_0+\triangle x)-f(x_0)=A\triangle x+o(\triangle x)$$，其中$A$为常数，则称$f$在$x_0$处可微。
+
+# 微分中值定理
+**<font color=red size=5>定义1 凸函数</font>**
+
+设$f$是定义在$I$上的函数，若$\forall x_1,x_2\in I$，$\forall \lambda\in (0,1)$，总有$$f(\lambda x_1+(1-\lambda x_2))\leq \lambda f(x_1)+(1-\lambda)f(x_2)$$，则称$f$为$I$上的凸函数。
+
+<font size=2>凹函数类似定义</font>
+
+**<font color=red size=5>定义2 拐点</font>**
+
+拐点是一段曲线上凹、凸曲线的分界点。
+
+# 不定积分
+**<font color=red size=5>定义1 原函数</font>**
+
+设$f$与$F$是定义在$I$上的函数。若$$F'(x)=f(x),\ x\in I$$，则称$F$为$f$在区间$I$上的一个原函数。
+
+**<font color=red size=5>定义2 不定积分</font>**
+
+$f$在区间$I$上的全体原函数称为$f$在$I$上的不定积分，记作$$\int f(x)dx$$。
+
+# 定积分
+**<font color=red size=5>定义1 定积分</font>**
+
+设$f$是$[a,b]$上的函数。若$\forall\ \varepsilon>0$，$\exists\ \delta>0$，使得对$[a,b]$上的任意分割$T$以及其上的任意点集$\{\xi_i\}$，只要$||T||<\delta$，就有$$|\sum_{i=1}^nf(\xi_i)\Delta x_i-A|<\varepsilon$$，则称$f$在$[a,b]$上可积，记为$\int_a^bf(x)dx$。
+
+# 反常积分
+**<font color=red size=5>定义1 无穷积分</font>**
+
+若$f$满足：
+
+(1) 在$[a,u]$上可积（$\forall\ u\in(a,+\infty)$）；
+
+(2) $\lim_\limits{u\rightarrow+\infty}\int_a^uf(x)dx$存在；
+
+则称无穷限反常积分$\lim_\limits{u\rightarrow+\infty}\int_a^uf(x)dx$存在，记作$\int_a^{+\infty}f(x)dx$收敛。
+
+**<font color=red size=5>定义2 瑕积分</font>**
+
+若$f$满足：
+
+(1) 在$[u,b]$上可积（$\forall\ u\in(a,b)$）；
+
+(2) $\lim_\limits{x\rightarrow a^+}f(x)=\infty$；
+
+(3) $\lim_\limits{u\rightarrow a^+}\int_{u}^bf(x)dx$存在；
+
+则称瑕积分$\lim_\limits{u\rightarrow a^+}\int_{u}^bf(x)dx$存在，记作$\int_a^bf(x)dx$收敛。
+
+# 多元函数极限与连续
+**<font color=red size=5>定义1 收敛点列</font>**
+
+若平面点列$\{P_n\}$满足：
+
+(1) $\forall\ \varepsilon>0$，$\exists\ N>0$，当$n>N$时，有$$P_n\in U(P;\varepsilon)$$；
+
+则称$\{P_n\}$收敛于点$P_0$，记作$$\lim_\limits{n\rightarrow\infty}P_n=P_0$$。
+
+**<font color=red size=5>定义2 二元函数的极限</font>**
+
+$f$为定义在$D\subset R^2$上的二元函数，$P_0$为$D$的一个聚点，$A$为一个确定的实数。若：
+
+(1) $\forall\ \varepsilon>0$，$\exists\ \delta>0$，当$P\in\mathop{U}^\limits{0}(P_0;\delta)\cap D$时，有$$|f(P)-A|<\varepsilon$$；
+
+则称$f$为$D$上当$P\rightarrow P_0$时的极限为$A$，记作$${\lim_\limits{P\rightarrow P_0}}_\limits{P\in D}f(P)=A$$。
+
+**<font color=red size=5>定义3 二元函数的累次极限</font>**
+
+$f$为定义在$D\subset R^2$上的二元函数，$P_0(x_0,y_0)$为$D$的一个聚点。若：
+
+(1) $\forall\ y\in Y,y\neq y_0$，存在极限$\lim_\limits{x\rightarrow x_0}=\varphi(y)$，其中$Y$为$D$在$y$轴上的投影；
+
+(2) $\lim_\limits{y\rightarrow y_0}\varphi(y)$存在；
+
+则称$\lim_\limits{y\rightarrow y_0}\lim_\limits{x\rightarrow x_0}f(x,y)$为$f$在$(x_0,y_0)$处先对$x$后对$y$的累次极限。
+
+**<font color=red size=5>定义4 二元函数的连续性</font>**
+
+$f$为定义在$D\subset R^2$上的二元函数，$P_0\in D$。若：
+
+(1) $\forall\ \varepsilon>0$，$\exists\ \delta>0$，当$P\in U(P_0;\delta)\cap D$时，有$$|f(P)-f(P_0)|<\varepsilon$$；
+
+则称$f$关于$D$在$P_0$连续。
+
+<font color="blue">注：当$P_0$点为孤立点时，$f$必在$P_0$连续；当$P_0$为聚点时，$f$在$P_0$连续等价于${\lim_\limits{P\rightarrow P_0}}_\limits{P\in D}f(P)=f(P_0)$。</font>
+
+# 多元函数微分
+**<font color=red size=5>定义1 二元函数的微分</font>**
+
+若$f$满足：
+
+(1) 在$U(P_0)$上有定义；
+
+(2) 在$P_0(x_0,y_0)$处的全增量可以表示为$$\Delta f(x_0,y_0)=A\Delta x+B\Delta y+o(\rho)\ \ (\rho\rightarrow 0)$$，其中$\rho=\sqrt{x^2+y^2}$；
+
+则称$f$在点$P_0$可微，$$dz=Adx+Bdy$$为全微分；
+
+**<font color=red size=5>定义2 偏导数</font>**
+
+$f$为定义在$D\subset R^2$上的二元函数，$P_0(x_0,y_0)\in D$。若：
+
+(1) $\lim_\limits{\Delta x\rightarrow0}\frac{\Delta_xf(x_0,y_0)}{\Delta x}=\lim_\limits{\Delta x\rightarrow0}\frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}$存在；
+
+则称这个极限为$f$在$(x_0,y_0)$关于$x$的偏导数，记作$\frac{\partial f}{\partial x}\Bigg{|}_{(x_0,y_0)}$或$f_x(x_0,y_0)$。
+
+# 含参量积分
+**<font color=red size=5>定义1 含参量反常积分一致收敛性</font>**
+
+若$\forall\ \varepsilon>0$，$\exists\ N>c$，当$M>N$时，$\forall\ x\in I$，有$$\big{|}\int_c^Mf(x,y)dy-\int_c^{+\infty}f(x,y)dy\big{|}<\varepsilon$$即$$\big{|}\int_M^{+\infty}f(x,y)dy\big{|}<\varepsilon$$，则称反常积分$\int_c^{+\infty}f(x,y)dy$在$I$上一致收敛。
+
+# 重积分
+## 二重积分
+**<font color=red size=5>定义1 二重积分</font>**
+
+设$f$是可求面积的有界闭域$D$上的函数。若$\forall \varepsilon>0$，$\exists\ \delta>0$，使得对$D$的任何分割$T$以及其上的任意点集$\{(\xi_i,\eta_i)\}$，只要$||T||<\delta$，就有$$\big{|}\sum_{i=1}^nf(\xi_i,\eta_i)\Delta \sigma_i-A\big{|}<\varepsilon$$，则称$f$在$D$上可积，记为$\iint_Df(x,y)d\sigma$，又可记作$\iint_Df(x,y)dxdy$。
+
+
+# 数项级数
+**<font color=red size=5>定义1 数项级数</font>**
+
+对数列$\{u_n\}$的所有项求和$$u_1+u_2+\cdots+u_n+\cdots$$称为常数项无穷级数（数项级数）。
+
+**<font color=red size=5>定义2 数项级数的敛散性</font>**
+
+若数项级数的部分和数列$\{S_n\}$收敛于$S$，则称该数项级数收敛于$S$；若$\{S_n\}$发散，则称该数项级数发散。
+
+# 函数项级数
+**<font color=red size=5>定义1 极限函数</font>**
+
+$\forall\ x\in D$，$\forall\ \varepsilon>0$，$\exists\ N>0$，当$n>N$时，有$$|f_n(x)-f(x)|<\varepsilon$$，则称函数列$\{f_n\}$在收敛域$D$上的极限函数是$f$。
+
+**<font color=red size=5>定义2 一致收敛性</font>**
+
+$\forall\ \varepsilon>0$，$\exists\ N>0$，当$n>N$时，$\forall\ x\in D$，有$$|f_n(x)-f(x)|<\varepsilon$$，则称$\{f_n\}$在收敛域$D$上一致收敛于$f$。
+
+<font color="blue">注：定义1中的$N$与$\varepsilon$和$x$有关，定义2中的$N$仅与$\varepsilon$有关。</font>
+
+<font color="blue">注：函数列有极限函数是讨论其一致收敛性的必要条件。</font>
+
+**<font color=red size=5>定义3 内闭一致收敛</font>**
+
+若对于任意闭区间$[a,b]\subset I$，有$\{f_n\}$收敛于$f$，则称$\{f_n\}$在$I$上内闭一致收敛于$f$。
+
+
+
+
+
+

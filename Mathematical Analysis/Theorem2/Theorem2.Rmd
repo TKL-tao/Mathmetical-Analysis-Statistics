@@ -1,0 +1,242 @@
+---
+title: "数学分析习题定理"
+author: "邹涛"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+setwd("G:/学习文件集/考研/Mathematical Analysis/Theorem2/")
+```
+
+# 函数极限
+**<font color="red" size=5>保不等式性</font>**：若$f$、$g$满足：
+
+(1) $\lim_\limits{x\rightarrow x_0}f(x)=+\infty$；
+
+(2) 在某$\mathop{U}^\limits{0}(x_0)$上有$f(x)\leq g(x)$；
+
+则$$\lim_\limits{x\rightarrow x_0}g(x)=+\infty$$。
+
+**<font color="red" size=5>常用函数极限</font>**：
+
+$\forall\ \alpha>0$，有$$\lim_\limits{x\rightarrow+\infty}\frac{\ln x}{x^\alpha}=0\ \ \ \ \ \lim_\limits{x\rightarrow0^+}x^\alpha\ln x=0$$。
+
+# 一元函数中值定理
+**<font color="red" size=5>常用Maclaurin公式</font>**：
+
+$$
+\begin{align}
+&e^x=\frac{x^0}{0!}+\frac{x^1}{1!}+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+o(x^n)\\
+&\sin x=\frac{x^1}{1!}-\frac{x^3}{3!}+\frac{x^5}{5!}+\cdots+(-1)^{n+1}\frac{x^{2n-1}}{(2n-1)!}+o(x^{2n})\\
+&\cos x=\frac{x^0}{0!}-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots+(-1)^{n}\frac{x^{2n}}{(2n)!}+o(x^{2n+1})\\
+&\ln(1+x)=\frac{x^1}{1}-\frac{x^2}{2}+\frac{x^3}{3}+\cdots+(-1)^{n+1}\frac{x^n}{n}+o(x^n)\\
+&(1+x)^\alpha=\frac{1}{0!}x^0+\frac{\alpha}{1!}x^1+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots+\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n+o(x^n)\\
+&\frac{1}{1-x}=x^0+x^1+x^2+\cdots+x^n+o(x^n)
+\end{align}
+$$
+
+# 一元积分
+**<font color="red" size=5>Wallis公式</font>**：
+$$\int_0^{\frac{\pi}{2}}\sin^nx\ dx=\int_0^{\frac{\pi}{2}}\cos^nx\ dx=\begin{cases}\frac{(n-1)!!}{n!!}\cdot\frac{\pi}{2}\ ,n为偶数\\\frac{(n-1)!!}{n!!}\ \ \ \ \ \ \ ,n为奇数\end{cases}$$
+$$\lim_\limits{n\rightarrow\infty}\frac{(n!!)^2}{(n+1)!!(n-1)!!}=\lim_\limits{n\rightarrow\infty}\frac{n!!\ (n-2)!!}{\big{[}(n-1)!!\big{]}^2}=\frac{\pi}{2}$$
+
+**<font color="red" size=5>无限间断点可积性</font>**：若$f$满足：
+
+(1) 在$[a,b]$上有界；
+
+(2) 仅以$\{a_n\}$为间断点，其中$\{a_n\}\subset[a,b]$，$\lim_\limits{n\rightarrow\infty}a_n$存在；
+
+则$f$在$[a,b]$上可积。
+
+**<font color="red" size=5>积分函数求导公式</font>**：若$f$，$u$，$v$满足：
+
+(1) $f$为连续函数；
+
+(2) $u$，$v$为可导函数；
+
+(3) 复合条件；
+
+则$$\frac{d}{dx}\int_{u(x)}^{v(x)}f(x)dx=f\big{[}v(x)\big{]}v'(x)-f\big{[}u(x)\big{]}u'(x)$$
+
+**<font color="red" size=5>常用积分计算公式</font>**：
+
+$$\int_0^{\frac{\pi}{2}}f(\sin x)\ dx=\int_0^{\frac{\pi}{2}}f(\cos x)\ dx=\int_0^{\frac{\pi}{2}}f(\sin 2x)\ dx$$$$\int_0^\pi xf(\sin x)\ dx=\frac{\pi}{2}\int_0^\pi f(\sin x)\ dx$$
+
+**<font color="red" size=5>个别不定积分</font>**：
+
+$$\int \frac{dx}{\sqrt{x^2+1}}=\ln{(\sqrt{x^2+1}+x)}+C$$
+
+$$\int\frac{dx}{\sqrt{x^2-1}}=\ln{|\sqrt{x^2-1}+x|}+C$$
+
+对于$\sqrt{x^2+1}$的计算需要使用分部积分法。$$\int \sqrt{x^2+1}\ dx=\frac{1}{2}x\sqrt{x^2+1}+\frac{1}{2}\ln{(\sqrt{x^2+1}+x)}+C$$
+
+$$\int\frac{1}{x^2-a^2}\ dx=\frac{1}{2a}\ln{\Big{|}\frac{x-a}{x+a}\Big{|}}+C$$
+
+$$\int \tan x\ dx=-\ln|\cos x|+C$$
+
+$$\int \sec x\ dx=\ln|\sec x+\tan x| +C$$
+
+# 多元函数极限与连续
+## 二元函数极限的性质
+**<font color="red" size=5>唯一性</font>**：若$f$满足：
+
+(1) $\lim_\limits{P\rightarrow P_0}f(x,y)$存在；
+
+则此极限唯一。
+
+**<font color="red" size=5>局部有界性</font>**：若$f$满足：
+
+(1) $\lim_\limits{P\rightarrow P_0}f(x,y)$存在；
+
+则$f$在某$\mathop{U}^\limits{0}(P_0;\delta)\cap D$上有界。
+
+**<font color="red" size=5>局部保号性</font>**：若$f$满足：
+
+(1) $\lim_\limits{P\rightarrow P_0}f(x,y)=A>0$；
+
+则$\forall r\in(0,A)$，$\exists\ \delta>0$，当$P\in\mathop{U}^\limits{0}(P_0;\delta)\cap D$时，有$$f(x,y)>r>0$$。
+
+## 累次极限
+**<font color="red" size=5>累次极限存在定理</font>**：若$f$满足：
+
+(1) $\lim_\limits{(x,y)\rightarrow(x_0,y_0)}f(x,y)=A$；
+
+(2) $\forall\ y\in\mathop{U}^\limits{0}(y_0)$，有$\lim_\limits{x\rightarrow x_0}f(x,y)=\varphi(y)$；
+
+则$$\lim_\limits{y\rightarrow y_0}\lim_\limits{x\rightarrow x_0}f(x,y)=A$$。
+
+**<font color="red" size=5>求累次极限顺序无关定理</font>**：若$f$满足：
+
+(1) 在$\mathop{U}^\limits{0}(x_0)$上一致地存在极限$\lim_\limits{y\rightarrow y_0}f(x,y)=\varphi(x)$；
+
+(2) $\forall\ y\in \mathop{U}^\limits{0}(y_0)$，$\lim_\limits{x\rightarrow x_0}f(x,y)=\psi(y)$；
+
+则$$\lim_\limits{x\rightarrow x_0}\lim_\limits{y\rightarrow y_0}f(x,y)=\lim_\limits{y\rightarrow y_0}\lim_\limits{x\rightarrow x_0}f(x,y)$$。
+
+<font color="blue">注：我把上述两个定理的条件2称为“常规极限存在”。</font>
+
+## 函数连续
+**<font color="red" size=5>累次连续定理</font>**：若$f$满足：
+
+(1) 关于$y\in[c,d]$，对$x\in[a,b]$一致连续；
+
+(2) $\forall\ x\in[a,b]$，$f(x,y)$在$y\in[c,d]$上连续；
+
+则$f(x,y)$在$[a,b]\times[c,d]$上连续。
+
+**<font color="red" size=5>定理</font>**：若$f$满足：
+
+(1) $\forall\ x\in R$，$f(x,y)$在$y\in R$上连续；
+
+(2) $\forall\ y\in R$，$f(x,y)$在$x\in R$上连续；
+
+(3) $\forall\ x\in R$，$f(x,y)$在$y\in R$上单调；
+
+则$f(x,y)$在$[a,b]\times[c,d]$上连续。
+
+# 反常积分
+## 常用无穷积分
+$$\int_1^{+\infty}\frac{dx}{x^p}$$，当$p>1$时收敛；当$p\leq1$时发散。
+
+$$\int_1^{+\infty}x^\alpha e^{-x}\ dx$$，$\forall\ \alpha\in \mathbb{R}$，收敛。
+
+$$\int_1^{+\infty}\frac{\sin x}{x^p}dx\ \ \ \ \int_1^{+\infty}\frac{\cos x}{x^p}dx$$，当$p>1$时绝对收敛；当$1\geq p>0$时条件收敛。
+
+$$\int_0^{+\infty}\frac{\sin x}{x}dx=\frac{\pi}{2}$$
+$$\int_0^{+\infty}e^{-x^2}dx=\frac{\sqrt{\pi}}{2}$$
+
+## 常用瑕积分
+$$\int_0^1\frac{dx}{x^p}$$，当$0<p\leq1$时收敛；当$p>1$时发散。
+
+$$\int_0^1\ln x\ dx=-1\ ;\ \int_0^1(\ln x)^n\ dx=(-1)^n\cdot n!$$
+
+## 其他结论
+**<font color="red" size=5>无穷积分被积函数趋于0</font>**：若$f$满足：
+
+(1) $\int_a^{+\infty}f(x)\ dx$存在；
+
+(2) $f$在$[a,+\infty)$上单调；或$f$在$[a,+\infty)$上一致连续；
+
+则$\lim_\limits{x\rightarrow+\infty}f(x)=0$。
+
+# 含参量反常积分
+## 常用算式及结论
+$$\int_0^{+\infty}e^{-px}\frac{\sin bx-\sin ax}{x}dx=\arctan\frac{b}{p}-\arctan\frac{a}{p}$$，其中$p>0$，$a>b$。
+$$\int_0^{+\infty}\frac{\sin xy}{y}dy=\frac{\pi}{2}\cdot sgn(x)$$
+$$2^n\cdot n!=(2n)!!$$
+
+# 数列与级数
+**<font color="red" size=5>Stolz定理</font>**：若$\{u_n\}$与$\{v_n\}$满足：
+
+(1) $\{v_n\}$严格单调递增，且$\lim_\limits{n\rightarrow\infty}v_n=+\infty$；
+
+(2) $\lim_\limits{n\rightarrow\infty}\frac{u_n-u_{n-1}}{v_n-v_{n-1}}=A$，其中$A$为常数或$\pm\infty$；
+
+则$$\lim_\limits{n\rightarrow\infty}\frac{u_n}{v_n}=A$$。
+
+## 常用收敛级数
+$$\sum_{n=1}^{+\infty}\frac{1}{n^p}$$，当$p>1$时收敛，当$1\geq p>0$时发散。
+
+$$\sum_{n=1}^{+\infty}\frac{1}{n(\ln n)^p}$$，当$p>1$时收敛，当$1\geq p>0$时发散。
+
+$\forall\ x\in\mathbb{R}$，$\sum\sin nx$有界；$\forall\ x\in\mathbb{R}$且$x\neq2k\pi\ ,k\in Z$，$\sum\cos nx$有界。
+
+$\forall\ x\in\mathbb{R}$，$\int_a^{+\infty}\sin xy\ dy$有界；$\forall\ x\in\mathbb{R}$且$x\neq0$，$\int_a^{+\infty}\cos xy\ dy$有界。
+
+## 常用无穷乘积
+$$\prod_{n=1}^{\infty}\cos{\frac{x}{2^n}}=\frac{\sin{x}}{x}$$。
+
+
+# 常用三角函数等式
+**<font color="red" size=5>和差化积公式</font>**：
+$$\cos\alpha+\cos\beta=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}$$
+$$\cos\alpha-\cos\beta=-2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}$$
+
+$$\sin\alpha+\sin\beta=2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2}$$
+$$\sin\alpha-\sin\beta=2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2}$$
+
+**<font color="red" size=5>其他公式</font>**：
+$$\arctan\alpha\pm\arctan\beta=\arctan\frac{\alpha\pm\beta}{1\mp\alpha\beta}$$
+
+$$\tan^2\theta+1=\sec^2\theta\ \ \ \ \ \ \cot^2\theta+1=\csc^2\theta$$
+$$\tan\frac{\theta}{2}=\frac{1-\cos\theta}{\sin\theta}$$
+
+# 重积分
+## 二重积分
+**<font color="red" size=5>二重积分交叉变量代换</font>**：
+
+变换$\begin{cases}u=x+y\\v=x-y\end{cases}$通常是不错的变量代换方式。
+
+## 三重积分
+**<font color="red" size=5>利用对称性计算三重积分</font>**：若积分区域$\Omega$满足：
+
+(1) 关于$xoz$平面对称，关于$yoz$平面对称；
+
+则$$\iiint_\limits{\Omega}xy\ dxdydz=\iiint_\limits{\Omega}xz\ dxdydz=\iiint_\limits{\Omega}yz\ dxdydz=0$$。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

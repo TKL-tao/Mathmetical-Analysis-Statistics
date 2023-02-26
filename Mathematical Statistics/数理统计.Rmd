@@ -1,0 +1,269 @@
+---
+title: "数理统计"
+author: "邹涛"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+```{r include=FALSE}
+setwd("F:/学习文件集/考研/Probability and Mathematical Statistics/Mathematical Statistics")
+```
+
+数理统计研究无限总体，因此样本$x_1$，$x_2$，$\cdots$，$x_n$是$n$个独立同分布的随机变量。
+
+# 统计量及其分布
+## 统计量
+### 统计量的定义
+若样本函数$T=T(x_1,x_2,\cdots,x_n)$不含有任何参数，则称$T$为统计量，统计量的分布称为抽样分布。
+
+### 样本均值统计量及其性质
+$$\bar{x}=\frac{1}{n}\sum_{i=1}^nx_i$$。
+**性质1**：$$\sum_{i=1}^n(x_i-\bar{x})=0$$。
+
+**性质2**：$$\sum_{i=1}^n(x_i-\bar{x})^2\leq\sum_{i=1}^n(x_i-c)^2$$，其中$c$为常数。
+
+### 样本方差
+$$s^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2$$。
+
+### 均值统计量与方差统计量定理
+若$x_1$，$x_2$，$\cdots$，$x_n$来自总体$X$（$Var(X)$存在），则：
+
+$$E(\bar{x})=E(X)\ \ \ \ \ Var(\bar{x})=\frac{1}{n}Var(X)$$$$E(s^2)=Var(X)$$；
+
+若$X\sim N(\mu,\sigma^2)$，则$$\bar{x}\sim N(\mu,\frac{1}{n}\sigma^2)$$；
+
+若$X$的分布未知，则$$\bar{x} \mathop{\sim}^\limits{.}N\big{(}E(X),\frac{1}{n}Var(X)\big{)}$$。
+
+### 样本矩统计量
+$k$阶原点矩：$u_k=\frac{1}{n}\sum x_i^k$；
+
+$k$阶中心矩：$v_k=\frac{1}{n}\sum (x_i-\bar{x})^k$。
+
+### 样本偏度统计量
+$$\beta_s=\frac{v_3}{v_2^{3/2}}$$。
+
+### 样本峰度统计量
+$$\beta_k=\frac{v_4}{v_2^2}-3$$。
+
+### 单次序统计量
+设总体$X$的密度函数为$p(x)$，分布函数为$F(x)$，则样本中第$k$个次序统计量$x_{(k)}$的密度函数为：$$p_{k}(x)=\frac{n!}{(k-1)!(n-k)!}\big{[}F(x)\big{]}^{k-1}\big{[}1-F(x)\big{]}^{n-k}p(x)$$。
+
+### 多次序统计量
+设总体$X$的密度函数为$p(x)$，分布函数为$F(x)$，则样本中第$i$个次序统计量$x_{(i)}$和第$j$个次序统计量$x_{(j)}$的联合密度函数为：$$p_{ij}(x_1,x_2)=\frac{n!}{(i-1)!(j-i-1)!(n-j)!}\big{[}F(x_1)\big{]}^{i-1}\big{[}F(x_2)-F(x_1)\big{]}^{j-i-1}\big{[}1-F(x_2)\big{]}^{n-j}p(x_1)p(x_2)$$，其中$x_1<x_2$。
+
+$R_n=x_{(n)}-x_{(1)}$为样本极差统计量。
+
+### 样本分位数统计量
+设样本$p$分位数为$m_p$，$$m_p=\begin{cases}x_{(\lfloor np+1\rfloor)}\ \ ,np\notin N_+\\\frac{1}{2}\big{(}x_{(np)}+x_{(np+1)}\big{)}\ ,np\in N_+\end{cases}$$。
+
+设总体的密度函数为$p(x)$，$p(x)$在$x_p$处连续且$p(x_p)>0$，则$$m_p\mathop{\sim}^\limits{.}N\Big{(}x_p,\frac{p(1-p)}{np^2(x_p)}\Big{)}$$。
+
+## 充分统计量
+### 充分统计量的定义
+设总体分布函数$F(x;\theta)$，$x_1$，$x_2$，$\cdots$，$x_n$为样本，$T=T(x_1,x_2,\cdots,x_n)$。若$F(x_1,x_2,\cdots,x_n|T=t)$中不含有参数$\theta$，则称$T$为充分统计量。
+
+### 因子分解定理
+设总体概率函数$f(x;\theta)$，$x_1$，$x_2$，$\cdots$，$x_n$为样本，$T=T(x_1,x_2,\cdots,x_n)$。
+$T$为充分统计量等价于$\Leftrightarrow$ 存在两个函数$g(t,\theta)$与$h(x_1,x_2,\cdots,x_n)$，对于任意的$\theta$和$x_1,x_2,\cdots,x_n$有$$f(x_1,x_2,\cdots,x_n;\theta)=g(T(x_1,x_2,\cdots,x_n),\theta)\cdot h(x_1,x_2,\cdots,x_n)$$。
+
+### 定理
+若$T$是充分统计量，且$t=h(s)$，则$S$也是充分统计量。
+
+### 充分性原则
+设总体概率函数$f(x;\theta)$，$x_1$，$x_2$，$\cdots$，$x_n$为样本，$T=T(x_1,x_2,\cdots,x_n)$为充分统计量。
+
+若$\hat{\theta}$是$\theta$的无偏估计量，则$\widetilde{\theta}=E(\hat{\theta}|T)$是$\theta$的$UMVUE$。
+
+### 常见充分统计量
+$$\begin{matrix}总体&充分统计量\\U(0,\theta)&x_{(n)}\\U(\theta_1,\theta_2)&(x_{(1)},x_{(n)})\\均匀离散分布&x_{(n)}\\N(\mu,\sigma^2)&(\sum_\limits{i=1}^n x_i,\sum_\limits{i=1}^nx_i^2)\\Ge(p)&\sum_\limits{i=1}^n x_i\\Nb(r,p)\ (r已知)&\sum_\limits{i=1}^nx_i\\P(\lambda)&\sum_\limits{i=1}^nx_i\end{matrix}$$
+
+
+
+## $\chi^2$分布
+### 定义
+设$x_1$，$x_2$，$\cdots$，$x_n$是来自$N(0,1)$的样本，则$\chi^2=x_1^2+x_2^2+\cdots+x_n^2$服从自由度为$n$的$\chi^2$分布，记为$$\chi^2\sim\chi^2(n)$$。
+
+### 定理
+若$x_1$，$x_2$，$\cdots$，$x_n$是来自$N(\mu,\sigma^2)$的样本，则
+
+(1) $\bar{x}$与$s^2$相互独立；
+
+(2) $\bar{x}\sim N(\mu,\sigma^2/n)$；
+
+(3) $\frac{(n-1)s^2}{\sigma^2}\sim \chi^2(n-1)$。
+
+## $F$分布
+### 定义
+设$X\sim\chi^2(m)$，$Y\sim\chi^2(n)$，且$X$与$Y$相互独立，则$\frac{X/m}{Y/n}$为自由度为$(m,n)$的$F$分布，记为$$\frac{X/m}{Y/n}\sim F(m,n)$$。
+
+### 性质
+$$F_\alpha(m,n)=\frac{1}{F_{1-\alpha}(n,m)}$$。
+
+### 定理
+若$x_1$，$x_2$，$\cdots$，$x_m$是来自$N(\mu_1,\sigma_1^2)$的样本，$y_1$，$y_2$，$\cdots$，$y_n$是来自$N(\mu_2,\sigma_2^2)$的样本，则$$\frac{s_x^2/\sigma_1^2}{s_y^2/\sigma_2^2}\sim F(m-1,n-1)$$。
+
+## $t$分布
+### 定义
+设$X\sim N(0,1)$，$Y\sim \chi^2(n)$，且$X$与$Y$相互独立，则称$\frac{X}{\sqrt{Y/n}}$服从自由度为$n$的$t$分布，记为$$\frac{X}{\sqrt{Y/n}}\sim t(n)$$。
+
+### 性质
+$t$分布的尾部比标准正态分布更宽。
+
+$n=1$时，$E(X)$不存在（此时为标准Cauchy分布）；
+
+$n\geq2$时，$E(X)=0$；
+
+$n\geq3$时，$Var(X)=\frac{n}{n-2}$。
+
+### 定理1
+设$x_1$，$x_2$，$\cdots$，$x_n$是来自$N(\mu,\sigma^2)$的样本，则$$\frac{\bar{x}-\mu}{s/\sqrt{n}}\sim t(n-1)$$。
+
+### 定理2
+若$x_1$，$x_2$，$\cdots$，$x_m$是来自$N(\mu_1,\sigma^2)$的样本，$y_1$，$y_2$，$\cdots$，$y_n$是来自$N(\mu_2,\sigma^2)$的样本，则$$\frac{(\bar{x}-\bar{y})-(\mu_1-\mu_2)}{s_w\sqrt{\frac{1}{m}+\frac{1}{n}}}\sim t(m+n-2)$$，其中$s_w^2=\frac{(m-1)s_x^2+(n-1)s_y^2}{m+n-2}$。
+
+# 参数估计
+## 估计量的性质
+### 估计量的相合性
+若估计量$\hat{\theta}_n$满足：$\forall\ \varepsilon>0$，有$$\lim_\limits{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|\geq\varepsilon)=0$$，则称$\hat{\theta}_n$为参数$\theta$的相合估计。
+
+相合性是对估计量的最基本要求。
+
+### 相合性定理一：
+若估计量$\hat{\theta}$满足：$$\lim_\limits{n\rightarrow\infty}E(\hat{\theta}_n)=\theta\ \ \ \lim_\limits{n\rightarrow\infty}Var(\hat{\theta}_n)=0$$，则$\hat{\theta}$是$\theta$的相合估计。 
+
+### 相合性定理二：
+若$\hat{\boldsymbol{\theta}}$是$\boldsymbol{\theta}$的相合估计，且$\eta=f(\boldsymbol{\theta})$，则$f(\hat{\boldsymbol{\theta}})$是$\eta$的相合估计。
+
+### 估计量的无偏性
+若估计量$\hat{\theta}$满足：$$E(\hat{\theta})=\theta$$，则称$\hat{\theta}$是$\theta$的无偏估计。
+
+### 无偏估计量的有效性
+若两无偏估计量$\hat{\theta}_1$和$\hat{\theta}_1$满足：$$Var(\hat{\theta}_1)\leq Var(\hat{\theta}_2)$$，则称$\hat{\theta}_1$比$\hat{\theta}_2$更有效。
+
+### 均方误差
+均方误差是评价点估计的最一般标准。$$\begin{align}MSE(\hat{\theta})&=E(\hat{\theta}-\theta)^2\\&=Var(\hat{\theta})+[E(\hat{\theta})-\theta]^2\end{align}$$。
+
+**定义 一致最小均方误差估计**
+
+对于$\theta$的一个参数空间为$\Theta$的估计类，使$MSE(\hat{\theta})$最小的估计量$\hat{\theta}$称为一致最小均方误差估计。
+
+**定义 一致最小方差无偏估计UMVUE**
+
+在无偏估计类中，使$Var(\hat{\theta})$最小的估计量称为一致最小方差无偏估计。
+
+### UMVUE判别定理
+设$\hat{\theta}$是$\theta$的无偏估计，$Var(\hat{\theta})<+\infty$。
+
+$\hat{\theta}$是$\theta$的UMVUE。 等价于$\Leftrightarrow$ 对于任意的$\varphi(x_1,x_2,\cdots,x_n)$，且$E(\varphi)=0$，$Var(\varphi)<+\infty$，有$$Cov(\hat{\theta},\varphi)=0$$，即UMVUE与任一0的无偏估计不相关。
+
+## 点估计
+### 点估计的定义
+用于估计总体未知参数$\boldsymbol{\theta}$的统计量$\hat{\boldsymbol{\theta}}$又称**估计量**，或**点估计**。
+
+### 矩法估计
+用样本矩去估计总体矩；用样本分位数去估计总体分位数。
+
+若总体的参数可以表示为总体矩的函数$f$，则可以通过样本矩和函数$f$估计总体的参数。
+
+矩法估计量一般都满足相合性。
+
+## 常用分布的点估计
+**<font color="red" size=5>$U(0,\theta)$的点估计</font>**：
+
+$$\begin{matrix}
+估计量&相合性&无偏性&均方误差&均方误差比较\\2\bar{x}&√&√&\frac{\theta^2}{3n}&最大\\\frac{n+1}{n}x_{(n)}&√&√&\frac{\theta^2}{n(n+2)}&中等\\\frac{n+2}{n+1}x_{(n)}&√&×&\frac{\theta^2}{(n+1)^2}&最小
+\end{matrix}$$
+
+**<font color="red" size=5>$Exp(\lambda)$的点估计</font>**：
+
+矩法估计和MLE的估计量都是$$\hat{\lambda}=\frac{1}{\bar{x}}$$。
+
+## 区间估计
+### 枢轴量法
+构造一个不依赖于任何参数的枢轴量，按照枢轴量的分布特点确定置信区间
+
+### 常用区间估计
+**<font color="red" size=5>$U(0,\theta)$的区间估计</font>**：
+枢轴量$U=\frac{x_{(n)}}{\theta}$，则$$F_U(u)=\begin{cases}1&1\leq u\\u^n&0<u<1\\0&u\leq0\end{cases}$$，最短置信区间$[x_{(n)},x_{(n)}/\sqrt[n]{\alpha}]$。
+
+**<font color="red" size=5>单正态总体参数$N(\mu,\sigma^2)$区间估计</font>**：
+$$\begin{matrix}\sigma^2&\mu&枢轴量&置信区间&注\\已知&估计&\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}\sim N(0,1)&\bar{x}\pm\frac{\sigma}{\sqrt{n}}\cdot u_{1-\frac{\alpha}{2}}&最小同等置信区间\\未知&估计&\frac{\bar{x}-\mu}{s/\sqrt{n}}\sim t(n-1)&\bar{x}\pm\frac{s}{\sqrt{n}}\cdot t_{1-\frac{\alpha}{2}}&最小同等置信区间\\估计&&\frac{(n-1)s^2}{\sigma^2}\sim \chi^2(n-1)&(n-1)s^2/\chi^2_{\beta}(n-1)&等尾置信区间\beta取1-\frac{\alpha}{2}和\frac{\alpha}{2}\end{matrix}$$
+
+**<font color="red" size=5>双正态总体参数$N(\mu_1,\sigma_1^2)$与$N(\mu_2,\sigma_2^2)$区间估计</font>**：
+$$\begin{matrix}&\mu_1-\mu_2&枢轴量&置信区间\\\sigma_1^2与\sigma_2^2已知&估计&\frac{(\bar{x}-\bar{y})-(\mu_1-\mu_2)}{\sqrt{\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}}}\sim N(0,1)&(\bar{x}-\bar{y})\pm\sqrt{\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}}\cdot u_{1-\frac{\alpha}{2}}\\\sigma_1^2=\sigma_2^2=\sigma未知&估计&\frac{(\bar{x}-\bar{y})-(\mu_1-\mu_2)}{s_w\sqrt{\frac{1}{m}+\frac{1}{n}}}\sim t(n+m-2)&(\bar{x}-\bar{y})\pm s_w\sqrt{\frac{1}{m}+\frac{1}{n}}\cdot t_{1-\frac{\alpha}{2}}(m+n-2)\\\frac{\sigma_2^2}{\sigma_1^2}=c已知&估计&&(\bar{x}-\bar{y})\pm s_w\sqrt{\frac{1}{m}+\frac{c}{n}}\cdot t_{1-\frac{\alpha}{2}}(m+n-2)\\大样本m,n&估计&\frac{(\bar{x}-\bar{y})-(\mu_1-\mu_2)}{\sqrt{\frac{s_x^2}{m}+\frac{s_y^2}{n}}}\sim N(0,1)\end{matrix}$$
+
+$$\begin{matrix}估计&枢轴量&置信区间&注\\\frac{\sigma_1^2}{\sigma_2^2}&\frac{s_x^2/\sigma_1^2}{s_y^2/\sigma_2^2}\sim F(m-1,n-1)&\frac{s_x^2}{s_y^2}\cdot\frac{1}{F_{\beta}(m-1,n-1)}&\beta取值与上面一样\end{matrix}$$
+
+# 假设检验
+## Ⅰ、 Ⅱ类错误与势函数
+$$\begin{matrix}&\theta\in\Theta_0&\theta\in\Theta_1\\(x_1,\cdots,x_n)\in W&Ⅰ\ \ error&正确\\(x_1,\cdots,x_n)\notin W&正确& Ⅱ\ \ error&\end{matrix}$$
+势函数$$g_\theta(\boldsymbol{x}\in W)=\begin{cases}\alpha(\theta)&\theta\in \Theta_0\\1-\beta(\theta)&\theta\in\Theta_1\end{cases}$$，势函数表示在已知$\theta$归属的参数空间的条件下，样本落入拒绝域的概率，其中$\alpha(\theta)$表示Ⅰ类错误的概率，$\beta(\theta)$表示Ⅱ类错误的概率。
+
+
+# 方差分析
+方差分析解决检验多正态总体（3个以上）均值是否相等问题。
+
+**<font color="red" size=5>方差分析原理</font>**：
+
+设$r$个总体以及对应的样本：$$\begin{matrix}X_1&x_{11}&x_{12}&\cdots&x_{1m}\\X_2&x_{21}&x_{22}&\cdots&x_{2m}\\\vdots&\vdots&\vdots&\ddots&\vdots\\X_r&x_{r1}&x_{r2}&\cdots&x_{rm}\end{matrix}$$。
+
+若上述数据满足：
+
+(1) $X_i\sim N(\mu_i,\sigma^2)\ \ i=1,2,\cdots,r$，诸$X_i$相互独立；
+
+考虑$$H_0:\mu_1=\mu_2=\cdots=\mu_r\ \ \ vs\ \ \ H_1:其中至少一对不相等$$
+
+记
+$$S_A=m\sum_{i=1}^r(\bar{x}_{i\cdot}-\bar{x})^2\ \ \ \ 自由度：r-1$$
+$$S_e=\sum_{i=1}^r\sum_{j=1}^m(x_{ij}-\bar{x}_{i\cdot})^2\ \ \ \ 自由度：r(m-1)$$
+$$S_T=\sum_{i=1}^r\sum_{j=1}^m(x_{ij}-\bar{x})^2\ \ \ \ 自由度：rm-1$$
+
+则有定理：
+
+(1) $\frac{S_e}{\sigma^2}\sim\chi^2\big{(}r(m-1)\big{)}$。
+
+(2) $H_0$成立时，$\frac{S_A}{\sigma^2}\sim\chi^2(r-1)$。
+
+(3) $S_e$与$S_A$相互独立。
+
+进而构造检验统计量$F=\frac{S_A/(r-1)}{S_e/r(m-1)}=\frac{MS_A}{MS_e}\sim F\big{(}r-1,r(m-1)\big{)}$，设计拒绝域为$W=\{F\geq F_{1-\alpha}\big{(}r-1,r(m-1)\big{)}\}$。
+
+**<font color="#f47e76" size=4>推论</font>**：
+
+若每个总体对应的样本数为$m_i$，则将$S_A$，$S_e$，$S_T$的计算方式修改为：
+
+$$S_A=\sum_{i=1}^rm_i(\bar{x}_{i\cdot}-\bar{x})^2\ \ \ \ 自由度：r-1$$
+$$S_e=\sum_{i=1}^r\sum_{j=1}^{m_i}(x_{ij}-\bar{x}_{i\cdot})^2\ \ \ \ 自由度：n-r$$
+$$S_T=\sum_{i=1}^r\sum_{j=1}^{m_i}(x_{ij}-\bar{x})^2\ \ \ \ 自由度：n-1$$
+其余过程不变。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

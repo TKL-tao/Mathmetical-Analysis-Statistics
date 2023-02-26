@@ -1,0 +1,76 @@
+---
+title: "概率论习题定理"
+author: "邹涛"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+---
+```{r include=FALSE}
+setwd("G:/学习文件集/考研/Probability and Mathematical Statistics/Probability theory")
+```
+
+# 其他常用分布
+## 离散均匀分布
+设离散随机变量$X$的分布列为$$P(X=k)=\frac{1}{N}$$，其中$k=1,2,\cdots,N$。$$E(X)=\frac{N+1}{2}\ \ \ \ Var(X)=\frac{N^2-1}{12}$$
+
+# 分布特征数
+## 期望、方差
+### 正态分布“偏心均值”
+若$X\sim N(\mu,\sigma^2)$，则$$E\big{(}|X-\mu|\big{)}=\sigma\sqrt{\frac{2}{\pi}}$$
+
+### 使用分布函数求连续随机变量的期望
+设连续随机变量$X$的分布函数为$F(x)$，$E(X)$存在，则$$E(X)=\int_0^{+\infty}\big{[}1-F(x)\big{]}dx-\int_{-\infty}^0F(x)\ dx$$；若$E(X^n)$存在，则$$E(X^n)=\int_0^{+\infty}nx^{n-1}\big{[}1-F(x)\big{]}dx-\int_{-\infty}^0nx^{n-1}F(x)\ dx$$。
+
+### 由随机变量取值范围得到期望、方差的取值范围
+设连续随机变量$X$在$[a,b]$上取值，则$$E(X)\in[a,b]\ \ \ Var(X)\leq \Big{(}\frac{b-a}{2}\Big{)}^2$$；若离散随机变量的分布列为$$\begin{matrix}X&a_1&a_2&a_3&\cdots&a_n\\P&p_1&p_2&p_3&\cdots&p_n\end{matrix}$$，则$$E(X)\in[a_1,a_n]\ \ \ Var(X)\leq \Big{(}\frac{a_n-a_1}{2}\Big{)}^2$$
+
+# 独立充要条件
+连续随机变量$X$与$Y$相互独立 等价于$\Leftrightarrow$ $\exists\ f,g$，使$$p(x,y)=f(x)g(y)$$，此时有$$p_X(x)=f(x)\int_{-\infty}^{+\infty}g(y)\ dy$$$$p_Y(y)=g(y)\int_{-\infty}^{+\infty}f(x)\ dx$$。
+
+# 条件分布
+### Possion分布和二项分布
+若$X\sim P(\lambda)$，$Y\sim b(x,p)$，则$$Y\sim P(p\lambda )$$。$X$可表示一天内进入超市的总人数，$Y$可表示每个人是否消费的两点分布的加和。
+
+# 正态随机变量的生成
+设$X\sim U(0,1)$，$Y\sim U(0,1)$，$X$与$Y$相互独立，则$$U=\sqrt{-2\ln{X}}\cos{2\pi Y}\ \ \ \ \ V=\sqrt{-2\ln{X}}\sin{2\pi Y}$$是两个相互独立的标准正态随机变量。
+
+# 二维正态分布及其性质
+设$(X,Y)\sim N(\mu_1,\mu_2,\sigma^2_1,\sigma^2_2,\rho)$
+
+$$\begin{cases}U=aX+bY\\V=cX+dY\end{cases}$$，其中$a$，$b$，$c$，$d$为常数，$ad-bc\neq0$；
+
+则$(U,V)$服从二维正态分布，且$$Corr(U,V)=\frac{ac\sigma^2_1+(ad+bc)\rho\sigma_1\sigma_2+bd\sigma^2_2}{\sqrt{a^2\sigma_1^2+b^2\sigma_2^2+2ab\rho\sigma_1\sigma_2}\sqrt{c^2\sigma_1^2+d^2\sigma^2_2+2cd\rho\sigma_1\sigma_2}}$$。
+
+当$\begin{cases}U=X+Y\\V=X-Y\end{cases}$，且$\sigma_1=\sigma_2$时，有$U$与$V$相互独立。
+
+# 样本均值方差更新公式
+## 新增单个样本的均值方差更新公式
+$$\begin{align}\bar{x}_{n+1}&=\bar{x}_n+\frac{1}{n+1}(x_{n+1}-\bar{x}_n)\\s_{n+1}^2&=\frac{n-1}{n}s_n^2+\frac{1}{n+1}(x_{n+1}-\bar{x}_n)^2\end{align}$$
+
+## 两个样本合并的均值方差更新公式
+$n$与$m$为样本容量。
+$$\bar{z}=\frac{n\bar{x}+m\bar{y}}{n+m}\\s_z^2=\frac{(n-1)s_x^2+(m-1)s_y^2}{m+n-1}+\frac{nm(\bar{x}-\bar{y})^2}{(n+m)(n+m+1)}$$。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
